@@ -1,6 +1,6 @@
 FROM golang:1.7.1
 
-# Copy everything from the src directory to /go/src directory inside the containers
+# Copy everything from the src directory to /go/src directory inside the container
 COPY src /go/src
 
 # Build the Go app
