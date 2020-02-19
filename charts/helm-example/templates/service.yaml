@@ -4,12 +4,9 @@ metadata:
   name: {{ template "fullname" . }}
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name  | quote }}
 spec:
   type: {{ .Values.service.type }}
-  template:
-    metadata:
-      labels:
-        release: {{ .Release.Name  | quote }}
   ports:
   - port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
