@@ -9,8 +9,8 @@ spec:
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
-      annotations:
-        buildID: {{ .Values.buildID }}
+      #annotations:
+      #  buildID: {{ .Values.buildID }}
       labels:
         draft: {{ default "draft-app" .Values.draft }}
         app: {{ template "fullname" . }}
