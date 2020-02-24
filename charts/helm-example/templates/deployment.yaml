@@ -16,7 +16,7 @@ spec:
         app: {{ template "fullname" . }}
     spec:
       imagePullSecrets:
-        - name: {{ .Values.image.pullSecret }}
+        - name: codefresh-generated-r.cfcr.io-cfcr-default
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
