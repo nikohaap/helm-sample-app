@@ -26,7 +26,7 @@ func getEnvOrDefault(key, defaultValue string) string {
 
 func initTracer() {
 	lExporter, err := lightstep.NewExporter(
-		lightstep.WithAccessToken("test"),
+		lightstep.WithAccessToken(getEnvOrDefault("LS_KEY", "your_access_token")),
 		lightstep.WithServiceName(getEnvOrDefault("SERVICE_NAME", "web-service")))
 
 	tp, err := sdktrace.NewProvider(sdktrace.WithConfig(sdktrace.Config{DefaultSampler: sdktrace.AlwaysSample()}),
