@@ -41,13 +41,8 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	trace.SpanFromContext(ctx).SetAttributes(key.String("service.version", getEnvOrDefault("SERVICE_VERSION", "1.0")))
 	n := rand.Intn(200) // n will be between 0 and 200
-	if n%2 == 0 {
-		fmt.Printf("Sleeping %d s...\n", (n / 2))
-		time.Sleep(time.Duration(n/2) * time.Second)
-	} else {
-		fmt.Printf("Sleeping %d ms...\n", n)
-		time.Sleep(time.Duration(n) * time.Millisecond)
-	}
+	fmt.Printf("Sleeping %d ms...\n", n)
+	time.Sleep(time.Duration(n) * time.Millisecond)
 	fmt.Fprintf(w, "I am a GO application running inside Docker.")
 }
 

@@ -1,5 +1,5 @@
 FROM golang:1.14 AS build-env
-ARG SOURCE_FILE=sample
+ARG SOURCE_FILE=1.0
 
 ENV GO11MODULE=on
 WORKDIR /app
