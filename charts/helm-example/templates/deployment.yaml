@@ -26,6 +26,8 @@ spec:
           value: {{ .Values.service.lsKey }}
         - name: SERVICE_NAME
           value: {{ .Values.service.name }}
+        - name: SERVICE_VERSION
+          value: {{ .Values.service.version }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         resources:
