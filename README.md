@@ -1,10 +1,11 @@
-# Codefresh Helm example
+# Helm + Codefresh with Lightstep
 
 ![Helm plus Codefresh](codefresh-helm.jpg)
+![With Lightstep](lslogo.png)
 
 This is an example Go application packaged with Docker and Helm.
-It is compiled using Codefresh.
-
+It is compiled using Codefresh. 
+This application has been instrumented with OpenTelemetry and Lightstep in order to monitor its performance.
 
 ## Create a multi-stage docker image
 
@@ -34,4 +35,8 @@ There is also a [codefresh.yml](codefresh.yml) for easy usage with the [Codefres
 For the direct deployment without storing the helm chart first see [codefresh-do-not-store.yml](codefresh-do-not-store.yml)
 
 More details can be found in [Codefresh documentation](https://codefresh.io/docs/docs/yaml-examples/examples/helm)
+
+## Using this project with Lightstep
+
+Sign up for a [Lightstep account](https://go.lightstep.com/trial) and set your project access token as the `LS_KEY` value in Helm to enable reporting. You can set this value in the `codefresh.yml` file, by passing it as a environment value to the `deploy` step in Codefresh.
 
