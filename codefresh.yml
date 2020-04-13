@@ -20,7 +20,7 @@ steps:
     tag: ${{CF_BRANCH_TAG_NORMALIZED}}
     dockerfile: Dockerfile  
     build_arguments:
-      - SOURCE_FILE=1.1
+      - SOURCE_FILE=1.0
   DeployMyChart:
     image: 'codefresh/cfstep-helm:3.0.3'
     title: Deploying Helm chart
