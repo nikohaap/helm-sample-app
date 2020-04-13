@@ -21,6 +21,11 @@ spec:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: LS_KEY
+          value: {{ .Values.service.lsKey }}
+        - name: SERVICE_NAME
+          value: {{ .Values. service.name }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         resources:
