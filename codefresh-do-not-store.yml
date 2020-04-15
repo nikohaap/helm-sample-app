@@ -8,19 +8,17 @@ steps:
     title: Cloning main repository...
     stage: prepare
     type: git-clone
-    repo: 'austinlparker/helm-sample-app'
+    repo: 'codefresh-contrib/helm-sample-app'
     revision: master
     git: github    
   MyAppDockerImage:
     title: Building Docker Image
     stage: build
     type: build
-    image_name: aparker/helm-sample-app-go
+    image_name: helm-sample-app-go
     working_directory: ./
-    tag: ${{CF_SHORT_REVISION}}
+    tag: 'multi-stage'
     dockerfile: Dockerfile  
-    build_arguments:
-      - SOURCE_FILE=fast
   DeployMyChart:
     image: 'codefresh/cfstep-helm:3.0.3'
     title: Deploying Helm chart
@@ -28,11 +26,9 @@ steps:
     environment:
       - CHART_REF=charts/helm-example
       - RELEASE_NAME=my-go-chart-prod
-      - KUBE_CONTEXT=${{KUBE_CONTEXT}}
+      - KUBE_CONTEXT=my-demo-k8s-cluster
       - VALUE_image_pullPolicy=Always
-      - VALUE_image_tag=${{CF_SHORT_REVISION}}
+      - VALUE_image_tag='multi-stage'
       - VALUE_replicaCount=3
       - VALUE_buildID='${{CF_BUILD_ID}}'
-      - VALUE_image_pullSecret=codefresh-generated-docker.io-dockerhub-default
-      - VALUE_service_lsKey=${{LS_KEY}}
-      - VALUE_service_version=${{CF_SHORT_REVISION}}
+      - VALUE_image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default
